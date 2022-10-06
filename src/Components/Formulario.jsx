@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
-const Formulario = ({setPacientes}) => {
+import Error from './Error'
+const Formulario = ({pacientes,setPacientes}) => {
 
   const [nombre, setNombre] = useState('');
   const [propietario, setPropietario] = useState('');
@@ -18,7 +19,23 @@ const Formulario = ({setPacientes}) => {
       return;
     }
       setError(false);
-      setPacientes(nombre);
+      //Objecto Paciente 
+      const objectoPaciente = {
+        nombre,
+        propietario,
+        email,
+        fecha,
+        sintomas
+      };
+      //console.log(objectoPaciente);
+      setPacientes([...pacientes,objectoPaciente]);
+
+      //reiniciar el formulario de la
+      setNombre('');
+      setPropietario('');
+      setEmail('');
+      setFecha('');
+      setSintomas('');
   }
 
   return (
@@ -33,20 +50,14 @@ const Formulario = ({setPacientes}) => {
           <form 
                 onSubmit={handleSubmit}
                 className="bg-white sandow-md  rounded-lg py-10 px-5 mb-10 ">
-                  {error &&  (
-                    <div className="bg-red-800 text-white text-center p-3 uppercase font-bold mb-3 rounded-md">
-                      <p>Todo los datos son importantes</p>
-                    </div>
-
-
-                  )}
+                  {error && (<Error><p> Todos los datos son importantes </p></Error>) }
             <div className="mb-5">
               <label htmlFor="mascota" className="block text-gray-700 uppercase font-buld ">Nombre Mascota   
               </label>
               <input 
                       id="mascota"
                       type="text" 
-                      className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" 
+                      className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"    
                       placeholder="Nombre de la Mascota"
                       value={nombre}
                       onChange={ (e) => setNombre(e.target.value) } 
