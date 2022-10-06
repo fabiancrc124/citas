@@ -6,7 +6,7 @@ const Header = ({}) => {
     <>
       <h1 className="font-black text-5xl text-center md:w-2/3 mx-auto">
          Seguimiento Pacientees {" "} 
-         <span className="text-indigo-600"></span>
+         <span className="text-indigo-600">veterinaria</span>
       </h1>
      
     </>
