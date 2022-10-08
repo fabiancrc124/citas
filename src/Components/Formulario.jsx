@@ -10,9 +10,16 @@ const Formulario = ({pacientes,setPacientes}) => {
   const [error, setError] = useState(false);
   
   const handleSubmit = (e) => {
+    
+    const generarId = () => {
+     const random = Math.random().toString(36).substr(2);
+     const fecha = Date.now().toString(36);
+     return random + fecha ;
+
+    }
     e.preventDefault();
     //Validacion del formulario
-    console.log("Enviando Formulario");
+    // console.log("Enviando Formulario");
     if ([nombre,propietario,email,fecha,sintomas].includes('')){
       console.log('al menos un campo vacion');
       setError(true);
@@ -25,7 +32,8 @@ const Formulario = ({pacientes,setPacientes}) => {
         propietario,
         email,
         fecha,
-        sintomas
+        sintomas,
+        id: generarId()
       };
       //console.log(objectoPaciente);
       setPacientes([...pacientes,objectoPaciente]);
