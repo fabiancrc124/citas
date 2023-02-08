@@ -1,16 +1,11 @@
-const Paciente = ({ paciente }) => {
+const Paciente = ({ paciente, setPaciente, eliminarPaciente }) => {
 
-  const { nombre, propietario, email, fecha, sintomas } = paciente;
-  // const  = () => {
-  //   return (  );
-  // }
+  const { nombre, propietario, email, fecha, sintomas, id } = paciente;
+
+  const handleEliminar = () => {
+    console.log("Eliminando...");
+  }
    
-  // const  = () => {
-  //   return (  );
-  // }
-   
-  
-  
   return (
     <div className="mx-5 my-10 bg-white shadow-md px-5 py-10 roundex-xl">
       <p className="font-buld mb-3 text-gray-700 uppercase" >Nombre: {''}
@@ -35,13 +30,14 @@ const Paciente = ({ paciente }) => {
       <div className="flex justify-between mt-10">
         <button
         className="py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase rounded-lg" 
-          type="button">
-          Editar
+          type="button"
+          onClick={() =>setPaciente(paciente)}
+          >Editar
         </button>
         <button
           className="py-2 px-10 bg-red-600 hover:bg-indigo-700 text-white font-bold uppercase rounded-lg" 
-          type="button">
-          Eliminar
+          type="button" onClick={handleEliminar}
+          >Eliminar
         </button>
       </div>
     </div>
