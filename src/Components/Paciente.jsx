@@ -3,7 +3,11 @@ const Paciente = ({ paciente, setPaciente, eliminarPaciente }) => {
   const { nombre, propietario, email, fecha, sintomas, id } = paciente;
 
   const handleEliminar = () => {
-    console.log("Eliminando...");
+    // console.log("Eliminando...");
+    const respuesta = confirm('Desea eliminar este paciente?');
+    if (respuesta) {
+      eliminarPaciente(id);
+    }
   }
    
   return (
